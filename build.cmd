@@ -69,6 +69,7 @@ if not "%cswinrt_label%"=="" goto %cswinrt_label%
 :restore
 if not exist .nuget md .nuget
 if not exist .nuget\nuget.exe powershell -Command "Invoke-WebRequest https://dist.nuget.org/win-x86-commandline/latest/nuget.exe -OutFile .nuget\nuget.exe"
+rem todo add to path to inherit in sln and get_testwinrt
 .nuget\nuget update -self
 .nuget\nuget.exe restore
 
@@ -101,6 +102,7 @@ if ErrorLevel 1 (
   exit /b !ErrorLevel!
 )
 
+rem todo remove all this
 :package
 set cswinrt_bin_dir=%~dp0_build\%cswinrt_platform%\%cswinrt_configuration%\cswinrt\bin\
 set cswinrt_exe=%cswinrt_bin_dir%cswinrt.exe

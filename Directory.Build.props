@@ -7,6 +7,14 @@
     <MinimumVisualStudioVersion>15.0</MinimumVisualStudioVersion>
     <CppWinRTVerbosity>high</CppWinRTVerbosity>
     <MicrosoftWinUIVersion>3.0.0-preview1.200419.0-CI</MicrosoftWinUIVersion>
+    <Win2DVersion>1.25.0</Win2DVersion>
+    <NugetDir>$(SolutionDir).nuget\</NugetDir>
+    <NugetBuildDir>$(NugetDir)Build\</NugetBuildDir>
+    <NugetCacheDir>$(NugetDir)Packages\</NugetCacheDir>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(TargetFramework)' != 'netcoreapp5.0'">
+    <DefineConstants>$(DefineConstants);MANUAL_IUNKNOWN</DefineConstants>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(VisualStudioVersion)' == '15.0'">
@@ -20,8 +28,9 @@
   </PropertyGroup>
 
   <PropertyGroup>
+    <NugetTestVersion>0.0.0-private.0</NugetTestVersion>
     <VersionNumber Condition="'$(VersionNumber)'==''">0.0.0.0</VersionNumber>
-    <VersionString Condition="'$(VersionString)'==''">0.0.0-private.0</VersionString>
+    <VersionString Condition="'$(VersionString)'==''">$(NugetTestVersion)</VersionString>
     <BuildPlatform>$(Platform)</BuildPlatform>
     <BuildPlatform Condition="'$(Platform)'=='Win32'">x86</BuildPlatform>
     <BuildOutDir Condition="'$(BuildOutDir)'==''">$([MSBuild]::NormalizeDirectory('$(SolutionDir)_build', '$(BuildPlatform)', '$(Configuration)'))</BuildOutDir>
