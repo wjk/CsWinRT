@@ -22,11 +22,11 @@ using System.Collections;
 
 namespace UnitTest
 {
-    public class TestComp
+    public class TestComponentCSharp
     {
         public Class TestObject { get; private set; }
 
-        public TestComp()
+        public TestComponentCSharp()
         {
             TestObject = new Class();
         }
